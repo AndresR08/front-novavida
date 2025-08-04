@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar sesión Nova Vida</title>
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+    <main>
+        <img src="img/logo.png" alt="Logo Nova Vida" class="logo" />
+
+        <div class="login-container">
+            <form id="login-form">
+
+                <label for="documento">Número de documento:</label>
+                <input type="text" id="documento" name="documento" required />
+
+                <label for="fecha">Fecha de nacimiento:</label>
+                <input type="date" id="fecha" name="fecha" required />
+
+                <button type="submit">Entrar</button>
+
+                <p class="ayuda'texto">
+                    ¿Necesitas ayuda? <a href="https://tulink.com" target="_blank">Atencion al usuario</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <script src="js/login.js"></script>
+</body>
+
+</html>
