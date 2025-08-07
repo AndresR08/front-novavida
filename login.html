@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesión Nova Vida</title>
-    <link rel="stylesheet" href="css/styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingreso - Centro Médico</title>
+  <link rel="stylesheet" href="Css/styles.css" />
 </head>
-
 <body>
-    <main>
-        <img src="img/logo.png" alt="Logo Nova Vida" class="logo" />
-
-        <div class="login-container">
-            <form id="login-form">
-
-                <label for="documento">Número de documento:</label>
-                <input type="text" id="documento" name="documento" required />
-
-                <label for="fecha">Fecha de nacimiento:</label>
-                <input type="date" id="fecha" name="fecha" required />
-
-                <button type="submit">Entrar</button>
-
-                <p class="ayuda'texto">
-                    ¿Necesitas ayuda? <a href="https://tulink.com" target="_blank">Atencion al usuario</a>
-                </p>
-            </form>
-        </div>
-    </main>
-
-    <script src="js/login.js"></script>
+  <div class="form-container">
+	<center><img src="img/logo1.JFIF" class="imagen-login" width="180" height="180"></center>
+    <h2>Acceso al Sistema</h2>
+    <form action="inicio.html" method="POST">
+      <div class="input-group">
+        <label for="documento">Número de Documento</label>
+        <input type="text" id="documento" name="documento" placeholder="Ingrese su número de documento" required />
+      </div>
+      <div class="input-group">
+        <label for="nacimiento">Fecha de Nacimiento</label>
+        <input type="date" id="nacimiento" name="nacimiento"
+       max="2007-12-31"
+       placeholder="Seleccione su fecha de nacimiento" required
+       <!-- El calendario se abre automáticamente al hacer clic -->
+      </div>
+      <a href="inicio.html"><button type="submit">Entrar</button></a>
+    </form>
+    <p class="volver">
+      ¿No tienes cuenta? <a href="api#whatapp">comunicate con redes de atencion <br>al whatsapp via chat</a>
+    </p>
+  </div>
 </body>
-
 </html>
