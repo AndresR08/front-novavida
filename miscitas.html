@@ -1,59 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
-    <title>NovaVida - Historial de Citas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Css/styles.css">
+    <title>Mis Citas</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="logo">
-                <img src="img/logo1.JFIF" class="imagen-logo" width="140" height="140">
-                <h2>NovaVida</h2>
-                <p>Tu vida es primero</p>
-            </div>
-            <nav>
-                <a href="inicio.html"><button>Agendar Citas</button></a>
-                <a href="miscitas.html"><button>Mis Citas</button></a>
-                <a href="ayuda.html"><button>Ayuda</button></a>
-                <a href="login.html"><button>Salir</button></a>
-            </nav>
-        </aside>
-        <main class="main-content">
-            <h1>Historial de Citas</h1>
-            <table class="appointments">
+    <!-- Menú lateral -->
+    <div class="sidebar">
+        <img src="logo.png" alt="Logo">
+        <button onclick="window.location.href='agendar.html'">Agendar Cita</button>
+        <button onclick="window.location.href='miscitas.html'">Mis Citas</button>
+        <button onclick="window.location.href='ayuda.html'">Ayuda</button>
+        <button onclick="window.location.href='login.html'">Salir</button>
+    </div>
+
+    <!-- Contenido principal -->
+    <div class="main-content">
+        <h1>Mis Citas</h1>
+        <div class="table-container">
+            <table id="tablaCitas">
                 <thead>
                     <tr>
                         <th>Fecha</th>
                         <th>Hora</th>
                         <th>Especialidad</th>
-                        <th>Estado</th>
-                        <th>Sede</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>29/07/2024</td>
-                        <td>9:30</td>
-                        <td>Medicina general</td>
-                        <td>Atendida</td>
-                        <td>Centro La Esperanza</td>
-                    </tr>
-                    <tr>
-                        <td>05/09/2025</td>
-                        <td>6:30</td>
-                        <td>Pediatría</td>
-                        <td>Pendiente</td>
-                        <td>Centro La Esperanza</td>
-                    </tr>
+                    <!-- Aquí se insertan las citas -->
                 </tbody>
             </table>
-            <div class="help-link">
-                <p>¿Necesitas ayuda? <a href="ayuda.html">Contáctanos</a></p>
-            </div>
-        </main>
+        </div>
     </div>
+
+    <script>
+        async function cargarCitas() {
+            try {
+                const res = await fetch('http://localhost:5000/miscitas');
+                const citas = await res.json();
+
+                const tbody = document.querySelector('#tablaCitas tbody');
+                tbody.innerHTML = '';
+
+                citas.forEach(cita => {
+                    const fila = document.createElement('tr');
+                    fila.innerHTML = `
+                        <td>${cita.fecha}</td>
+                        <td>${cita.hora}</td>
+                        <td>${cita.especialidad}</td>
+                        <td><button onclick="cancelarCita('${cita.id}')">Cancelar</button></td>
+                    `;
+                    tbody.appendChild(fila);
+                });
+            } catch (error) {
+                console.error(error);
+                alert('Error al cargar las citas');
+            }
+        }
+
+        async function cancelarCita(id) {
+            if (!confirm('¿Seguro que quieres cancelar esta cita?')) return;
+
+            try {
+                const res = await fetch(`http://localhost:5000/cancelar/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (res.ok) {
+                    alert('Cita cancelada');
+                    cargarCitas();
+                } else {
+                    alert('Error al cancelar cita');
+                }
+            } catch (error) {
+                console.error(error);
+                alert('Error de conexión');
+            }
+        }
+
+        cargarCitas();
+    </script>
 </body>
+
 </html>
