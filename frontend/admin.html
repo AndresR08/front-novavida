@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>NovaVida - Admin</title>
+</head>
+<link rel="stylesheet" href="styles.css">
+
+<body>
+    <h1>Panel Admin</h1>
+    <div id="login">
+        <input id="admin-doc" placeholder="Documento admin">
+        <input id="admin-fecha" type="date">
+        <button id="btn-admin-login">Entrar</button>
+        <p id="admin-msg"></p>
+    </div>
+
+    <div id="panel" style="display:none;">
+        <h2>Crear sede</h2>
+        <input id="sede-nombre" placeholder="Nombre sede">
+        <input id="sede-dir" placeholder="Dirección">
+        <button id="crear-sede">Crear sede</button>
+
+        <h2>Crear doctor</h2>
+        <input id="doc-nombre" placeholder="Nombre doctor">
+        <input id="doc-especialidad" placeholder="Especialidad">
+        <input id="doc-sedeid" placeholder="Sede id (num)">
+        <button id="crear-doc">Crear doctor</button>
+
+        <h2>Crear disponibilidad</h2>
+        <input id="disp-doctor" placeholder="Doctor id">
+        <input id="disp-fecha" type="date">
+        <input id="disp-hi" placeholder="hora inicio HH:MM">
+        <input id="disp-hf" placeholder="hora fin HH:MM">
+        <button id="crear-disp">Agregar disponibilidad</button>
+
+        <h3>Listas</h3>
+        <button id="ver-sedes">Ver sedes</button>
+        <button id="ver-doctores">Ver doctores</button>
+        <div id="listado"></div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

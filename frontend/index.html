@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>NovaVida - Paciente</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Flatpickr CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+        /* Días disponibles en verde */
+        
+        .disponible-flat {
+            background-color: #22c55e !important;
+            color: white !important;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>NovaVida — Paciente</h1>
+
+        <!-- LOGIN -->
+        <section id="login" class="card">
+            <h2>Ingreso</h2>
+            <input id="doc" placeholder="Documento">
+            <input id="fecha_nac" type="text" placeholder="Selecciona fecha" readonly>
+            <button id="btn-login">Ingresar</button>
+            <p id="login-msg" class="error"></p>
+        </section>
+
+        <!-- AGENDA -->
+        <section id="agenda" class="card" style="display:none;">
+            <h2>Agendar cita</h2>
+
+            <div class="form-cita">
+                <label>Especialidad:
+                    <select id="select-especialidad">
+                        <option value="">-- elige --</option>
+                    </select>
+                </label>
+                <label>Doctor:
+                    <select id="select-doctor">
+                        <option value="">-- elige --</option>
+                    </select>
+                </label>
+            </div>
+
+            <h3>Calendario</h3>
+            <input id="fecha" type="text" placeholder="Selecciona fecha" readonly>
+
+            <h3>Horas disponibles</h3>
+            <div id="disponibilidad" class="filtros"></div>
+
+            <input id="motivo" placeholder="Motivo (opcional)">
+            <button id="btn-agendar">Agendar</button>
+
+            <h3>Mis citas</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Doctor</th>
+                        <th>Fecha</th>
+                        <th>Hora</th>
+                        <th>Estado</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody id="mis-citas"></tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Flatpickr JS -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
